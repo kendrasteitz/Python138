@@ -24,4 +24,15 @@ class TextInterface:
     def chooseDice(self):
         return eval(input("Enter list of which to change ([] to stop) "))
 
-
+    def choose(self, choices):
+        buttons = self.buttons
+        for b in buttons:
+            if b.getLabel() in choices:
+                b.activate
+            else:
+                b.deactivate()
+        while True:
+            p = self.win.getMouse()
+            for b in buttons:
+                if b.clicked(p):
+                    return b.getLabel()

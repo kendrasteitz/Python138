@@ -1,6 +1,5 @@
 
 
-
 from graphics import *
 
 class Button:
@@ -41,3 +40,17 @@ class Button:
         self.label.setFill('darkgrey')
         self.rect.setWidth(1)
         self.active = False
+
+    def choose(self, choices):
+        buttons = self.buttons
+        for b in buttons:
+            if b.getLabel() in choices:
+                b.activate()
+            else:
+                b.deactivate()
+
+        while True:
+            p = self.win.getMouse()
+            for b in buttons:
+                if b.clicked(p):
+                    return b.getLabel()

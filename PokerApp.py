@@ -1,13 +1,12 @@
 
 from Dice import Dice
-from textpoker import TextInterface
 
 class PokerApp:
 
-    def __init__(self):
+    def __init__(self, GraphicsInterface):
         self.dice = Dice()
         self.money = 100
-        self.interface = TextInterface()
+        self.interface = GraphicsInterface
 
     def run(self):
         while self.money >= 10 and self.interface.wantToPlay():
@@ -34,4 +33,5 @@ class PokerApp:
             self.interface.setDice(self.dice.values())
             if roll < 3:
                 toRoll = self.interface.chooseDice()
+
 
