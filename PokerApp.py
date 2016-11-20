@@ -6,6 +6,7 @@ class PokerApp:
     def __init__(self, GraphicsInterface):
         self.dice = Dice()
         self.money = 100
+        self.total = 0
         self.interface = GraphicsInterface
 
     def run(self):
@@ -20,6 +21,10 @@ class PokerApp:
         result, score = self.dice.score()
         self.interface.showResult(result, score)
         self.money = self.money + score
+        if score > 0:
+            self.totalScore(score)
+        else:
+            self.totalScore(score - 10)
         self.interface.setMoney(self.money)
 
     def doRolls(self):
@@ -34,4 +39,9 @@ class PokerApp:
             if roll < 3:
                 toRoll = self.interface.chooseDice()
 
+    def totalScore(self, score):
+        self.total = self.total + score
+
+    def getTotalScore(self):
+        return self.total
 

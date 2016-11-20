@@ -25,6 +25,8 @@ class GraphicsInterface:
         self.buttons.append(b)
         b = Button(self.win, Point(570, 375), 40, 30, "Quit")
         self.buttons.append(b)
+        self.helper = Button(self.win, Point(30, 375), 40, 30, "help")
+        self.helper.activate()
         self.money = Text(Point(300, 325), "$100")
         self.money.setSize(18)
         self.money.draw(self.win)
@@ -71,7 +73,6 @@ class GraphicsInterface:
         choices = []
         while True:
             b = self.choose(["Die 1", "Die 2", "Die 3", "Die 4", "Die 5", "Roll Dice", "Score"])
-
             if b[0] == "D":
                 i = eval(b[4]) - 1
                 if i in choices:
@@ -98,8 +99,45 @@ class GraphicsInterface:
 
         while True:
             p = self.win.getMouse()
+            if self.helper.clicked(p):
+                self.helpMenu()
             for b in buttons:
                 if b.clicked(p):
                     return b.getLabel()
 
 
+    def helpMenu(self):
+        win = GraphWin("Help", 500, 300)
+        win.setCoords(0, 0, 50, 50)
+        win.setBackground("orange")
+
+        banner = Text(Point(25, 46), "Payout Table")
+        banner.setSize(16)
+        banner.setFill("black")
+        banner.setStyle("bold")
+        banner.draw(win)
+        Rectangle(Point(3, 9), Point(47, 38)).draw(win)
+        Rectangle(Point(3, 38), Point(47, 42)).draw(win)
+
+        Text(Point(6, 40), "Hand").draw(win)
+        Text(Point(45, 40), "Pay").draw(win)
+        Text(Point(7, 35), "Two Pairs").draw(win)
+        Text(Point(45, 35), "5").draw(win)
+        Text(Point(9, 31), "Three of a Kind ").draw(win)
+        Text(Point(45, 31), "8").draw(win)
+        Text(Point(18, 27), "Full House (A Pair and a Three of a Kind) ").draw(win)
+        Text(Point(45, 27), "12").draw(win)
+        Text(Point(9, 23), "Four of a Kind   ").draw(win)
+        Text(Point(45, 23), "15").draw(win)
+        Text(Point(12, 19), "Straight (1 - 5 or 2 - 6)     ").draw(win)
+        Text(Point(45, 19), "20").draw(win)
+        Text(Point(9, 15), "Five of a Kind   ").draw(win)
+        Text(Point(45, 15), "30").draw(win)
+
+        exit = Button(win, Point(25, 4), 10, 4, "Exit")
+        exit.activate()
+        pt = win.getMouse()
+        while not exit.clicked(pt):
+            pt = win.getMouse()
+        if exit.clicked(pt):
+            win.close()
