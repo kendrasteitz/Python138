@@ -4,10 +4,30 @@
 # Date:          November 19, 2016
 #
 # Problem Statement:
-#   
+#   Modify Dice Poker to have include instructions, a help feature that
+#   gives the user the payoffs and keep track of scores allowing anyone
+#   that scores among the ten highest to enter their name
 #
 # Overall Plan:
-#   1.
+#   1. Take code from the book for Dice Poker (a few changes needed)
+#   2. Create a rules method that outputs a splash screen before the
+#       main interface explaining things to the user and output top ten
+#       names with their scores
+#   3. If user agrees to play call upon the class GraphicsInterface and
+#       PokerApp
+#           inter = GraphicsInterface()
+#           app = PokerApp(inter)
+#           app.run()
+#   4. Add a help button to the main interface that when clicked opens
+#       a GUI that outputs the payoffs for the game - Create a method to this
+#   5. Create a method to keep track of the Users score
+#   6. Create a method to read in files
+#       read in the scores from the top 10 players from the file.
+#       Store those figures into a python dictionary allowing you to retrieve
+#       those values when needed.  When user is done playing, compare their total
+#       score with the scores of the top ten.  If the user's score is higher, delete
+#       the lowest score and allow the user to enter their name to replace it.
+#   7. Once done, write out all the top scores back into the high_scores file
 #
 #
 
