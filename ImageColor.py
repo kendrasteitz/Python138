@@ -8,7 +8,7 @@
 #
 # Overall Plan:
 #   1. Load image
-#   2. implement psuedocode that was given
+#   2. implement pseudocode that was given
 #
 
 from graphics import*
@@ -34,11 +34,12 @@ def main():
             brightness = int(round(0.299 * r + 0.587 * g + 0.114 * b))
 
             img.setPixel(row, column, color_rgb(brightness, brightness, brightness))
-            img.save("foxGray.ppm")
+            img.save("foxGray.gif")
             win.update()
 
     print("Done")
     win.getMouse()
+    Image(Point(73, 93.5), "foxGray.gif").draw(win)
     win.close()
 
 main()
