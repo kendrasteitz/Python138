@@ -1,11 +1,13 @@
 
 from random import randrange
 
+
 def linearSearch(x, nums):
     for i in range(len(nums)):
         if nums[i] == x:
             return i
     return -1
+
 
 def binarySearch(x, nums):
     low = 0
@@ -20,6 +22,7 @@ def binarySearch(x, nums):
         else:
             low = mid + 1
     return -1
+
 
 def merge(lst1, lst2, lst3):
     i1, i2, i3 = 0, 0, 0
@@ -45,6 +48,7 @@ def merge(lst1, lst2, lst3):
         i2 = i2 + 1
         i3 = i3 + 1
 
+
 def mergeSort(nums):
     n = len(nums)
     if n > 1:
@@ -54,8 +58,8 @@ def mergeSort(nums):
         mergeSort(nums2)
         merge(nums1, nums2, nums)
 
-def makeList():
 
+def makeList():
     numbs = []
     i = 0
     while i < 500000:
@@ -64,6 +68,7 @@ def makeList():
         i = i + 1
 
     return numbs
+
 
 def main():
 

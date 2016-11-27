@@ -8,11 +8,18 @@
 #   palindrome or not.
 #
 # Overall Plan:
-#   1.
-#
+#   1. Strip sentence of all whitespace
+#   2. Transfer to all lowercase
+#   3. Strip sentence of all punctuation
+#   4. Split sentence in half
+#   5. Reverse the second part of the sentence
+#   6. Compare the two halves
+#       if they are equal to each other, it's a palindrome
+#       if they are not equal, the sentence is not a palindrome
 #
 
 from string import punctuation
+
 
 def palindrome(sentence):
     s = sentence.replace(" ", "")
@@ -28,7 +35,7 @@ def palindrome(sentence):
         new = new + (secondPart[len(secondPart) - i])
         i = i + 1
 
-    if(firstPart == new):
+    if firstPart == new:
         print(sentence, "is a Palindrome")
     else:
         print(sentence, "is not a Palindrome")
@@ -36,7 +43,7 @@ def palindrome(sentence):
 
 def main():
 
-   sentence = input("Enter sentence: ")
-   palindrome(sentence)
+    sentence = input("Enter sentence: ")
+    palindrome(sentence)
 
 main()
