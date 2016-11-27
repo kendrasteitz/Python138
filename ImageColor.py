@@ -1,4 +1,4 @@
-# Exercise No.   1
+# Exercise No.   2
 # File Name:     ImageColor.py
 # Programmer:    Kendra Steitz
 # Date:          November 19, 2016
@@ -9,6 +9,8 @@
 # Overall Plan:
 #   1. Load image
 #   2. implement pseudocode that was given
+#       use nested for loops for row and column going pixel by
+#       pixel taking the color (red, green, and blue) out of it.
 #
 
 from graphics import*

@@ -11,13 +11,15 @@
 # Overall Plan:
 #   1. Create function linearSearch(x, nums)
 #   2. Create function binarySearch(x, nums)
-#       for binary search, list has to be sorted - use pythons sorting
+#       for binary search, list has to be sorted - use the built-in python method
 #   3. Create a function that makes a list of the size needed
 #   4. Run program for each size list using linear search and binary search
-#   5. Take note of differences, if any
+#   5. Use timeit to time each function and output the seconds it took and
+#       the amount of steps to find the number searched for
 #
 
 from random import randrange
+import timeit
 
 
 def linearSearch(x, nums):
@@ -46,10 +48,11 @@ def makeList():
     numbs = []
     i = 0
     while i < 500000:
-        number = randrange(1, 100000)
+        number = randrange(1, 1000000)
         numbs.append(number)
         i = i + 1
 
+    # numbs.sort()
     return numbs
 
 
@@ -57,11 +60,22 @@ def main():
 
     numbers = makeList()
 
-    num = linearSearch(21, numbers)
-    num2 = binarySearch(21, numbers)
-    print(num)
-    print(num2)
-    print(numbers[num])
-    print(numbers[num2])
+    start = timeit.default_timer()
+
+    # Perform the search
+    foundIt = linearSearch(17, numbers)
+    # foundIt = binarySearch(17, numbers)
+
+    # Stop the clock
+    stop = timeit.default_timer()
+
+    steps = linearSearch(17, numbers)
+    # steps = binarySearch(17, numbers)
+
+    # Print the time and number of steps it took
+    if foundIt != -1:
+        print("Search with 5000 items:", stop - start, "seconds (", steps, "steps )")
+    else:
+        print("Not in list")
 
 main()
